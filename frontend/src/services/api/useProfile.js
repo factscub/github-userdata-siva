@@ -17,7 +17,7 @@ export const useProfile = (username) => {
             try {
 
                 const signal = abortController.signal;
-                const data = await fetch(`http://localhost:3000/api/username/${username}`, { signal });
+                const data = await fetch(`https://github-backend-siva.onrender.com/api/username/${username}`, { signal });
                 if (!data.ok) {
                     setLoading(false);
                     throw new Error('Something went wrong.')

@@ -17,7 +17,7 @@ export const useRepos = ({ username }) => {
             try {
                 const signal = abortController.signal;
 
-                const data = await fetch(`http://localhost:3000/api/repos?` +
+                const data = await fetch(`https://github-backend-siva.onrender.com/api/repos?` +
                     new URLSearchParams({
                         username,
                         // per_page: 10

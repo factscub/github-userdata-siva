@@ -17,7 +17,7 @@ export const useLanguages = ({ username, repo }) => {
             try {
                 const signal = abortController.signal;
 
-                const data = await fetch(`http://localhost:3000/api/languages?` +
+                const data = await fetch(`https://github-backend-siva.onrender.com/api/languages?` +
                     new URLSearchParams({
                         username,
                         repo
