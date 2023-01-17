@@ -2,6 +2,7 @@ const { Octokit } = require("octokit");
 const express = require('express');
 const app = express();
 const cors = require('cors');
+require('dotenv').config();
 
 app.use(cors({
     origin:'*',
@@ -12,7 +13,7 @@ app.use(express.json());
 const port = process.env.PORT || 3000;
 
 const octokit = new Octokit({
-    auth: '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'
+    auth: process.env.AUTH
 });
 
 app.get('/', (req, res) => {
