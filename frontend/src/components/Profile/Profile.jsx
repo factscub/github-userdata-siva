@@ -4,19 +4,18 @@ import styled from 'styled-components';
 import { firstLetterToCapital } from '../../utils/FirstLetterToCapital';
 import Loader from '../Loader';
 import Button from '../Button';
-const Profile = ({ username }) => {
-    const { data, loading, error, callback } = useProfile(username);
-
+const Profile = ({ username, setTotalPages, setDataPresent }) => {
+    const { data, loading, error } = useProfile(username, setTotalPages, setDataPresent);
     if (loading) {
         return <Loader />
     }
-    // if (error) {
-    //     return <Button >{error}</Button>
-    // }
+    if (error[0]) {
+        return <Button >{error[1]}</Button>
+    }
     return (
         <>
             {
-                data && (
+                (data && !error[0]) && (
                     <div className='profileContainer' >  <AvatarAndInfo className='avatarandinfo'>
                         <AvatarContainer className='avatarContainer'>
                             <img src={data?.avatar_url} alt='avatar' />

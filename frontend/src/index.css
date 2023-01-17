@@ -1,4 +1,6 @@
-*,*::after,*::before{
+*,
+*::after,
+*::before {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -7,8 +9,35 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-a{
+a {
   text-decoration: none;
 }
 
+.pagination {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
 
+}
+
+.page-item {
+  margin-right: 15px;
+  background: #fff000;
+  padding: 5px 10px;
+  border: 1px solid;
+  height: 35px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  border: 2px solid red;
+  cursor: pointer;
+}
+
+.page-link {}
+
+.active {
+  background-color: #c7bb07;
+}
+
+.disabled {
+  background: rgb(190, 186, 186);
+}

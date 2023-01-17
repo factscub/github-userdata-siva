@@ -5,10 +5,10 @@ import { firstLetterToCapital } from '../../utils/FirstLetterToCapital';
 import Languages from '../Languages/Languages';
 import Loader from '../Loader';
 
-const Repo = ({ username }) => {
+const Repo = ({ username,pageNumber }) => {
 
-    const { data, error, loading } = useRepos({ username });
-    console.log(data)
+    const { data, error, loading } = useRepos({ username,pageNumber });
+    // console.log(data)
 
     if (loading) {
         return <Loader />

@@ -7,7 +7,6 @@ const SearchBar = ({setUsername}) => {
         e.preventDefault();
         const formData = new FormData(e.target)
         setUsername(formData.get('username'));
-        console.log(formData.get('username'))
     }}>
         <Input type='text' placeholder='Enter github username' name='username' />
         <Submit type='submit' value='Search'/>

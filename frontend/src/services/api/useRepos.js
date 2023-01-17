@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export const useRepos = ({ username }) => {
+export const useRepos = ({ username, pageNumber }) => {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -9,17 +9,20 @@ export const useRepos = ({ username }) => {
     useEffect(() => {
 
         const abortController = new AbortController();
-        async function callback(username) {
+        async function callback(username, pageNumber) {
             if (!username) {
                 return;
             }
             setLoading(true);
+            setError([]);
+            setData(null)
             try {
                 const signal = abortController.signal;
 
                 const data = await fetch(`https://github-backend-siva.onrender.com/api/repos?` +
                     new URLSearchParams({
                         username,
+                        page: pageNumber
                         // per_page: 10
                     })
                 );
@@ -28,7 +31,6 @@ export const useRepos = ({ username }) => {
                     throw new Error('Something went wrong.')
                 }
                 const profile = await data.json();
-                console.log(profile)
                 setData(profile.data);
                 setLoading(false);
 
@@ -39,11 +41,11 @@ export const useRepos = ({ username }) => {
             }
 
         }
-        callback(username);
+        callback(username, pageNumber);
 
         return () => {
             abortController.abort();
         }
-    }, [username]);
+    }, [username, pageNumber]);
     return { data, error, loading };
 }
